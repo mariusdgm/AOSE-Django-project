@@ -1,0 +1,78 @@
+{% extends "foodster/header.html" %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+<div>
+    <h3> 
+    Your basket
+    </h3>
+</div>
+
+<table class="highlight">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Dish</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total price</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for order_item in order.items.all %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ order_item.item.name }}</td>
+            <td>{{ order_item.item.price }}</td>
+            <td>
+                <!-- <i class="material-icons left">indeterminate_check_box</i> 
+                <i class="material-icons left">add</i></td> -->
+                <a href="{{ order_item.item.get_order_remove_from_cart_url }}"><i class="fa fa-minus mr-3"></i></a>
+                {{ order_item.quantity }} 
+                <a href="{{ order_item.item.get_order_add_to_cart_url }}"><i class="fa fa-plus mr+3"></i></a>
+                
+            <td>{{ order_item.get_total_item_price }}</td>
+            <td>
+                <a href="{{ order_item.item.get_order_remove_from_cart_whole_item_url }}" >
+                    <i class="fa fa-trash center" style="color: red;"></i>
+                </a>
+            </td>
+        </tr>
+        
+    {% empty %}
+        <tr>
+            <td colspan="5">
+                Your basket is empty
+            </td>
+        </tr>
+    
+    {% endfor %} 
+
+    {% if order.items.all %}
+    <tr>
+        <td colspan="3"></td>
+        <td><b>Order total</b></td>
+        <td> 
+            <b>
+            {{ order.get_total_price }} lei
+            </b>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="5"> 
+            <a class="btn btn-warning right" href="/place-order/">
+            Order
+            </a>
+        </td>
+    </tr>
+    {% endif %}
+
+</table>
+
+{% endblock %}

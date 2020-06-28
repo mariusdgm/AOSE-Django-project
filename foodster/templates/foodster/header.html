@@ -1,0 +1,57 @@
+<head>
+    {% load static %}
+    <!-- Compiled and minified CSS -->
+    <link href="{% static 'foodster/css/materialize.css' %}" rel="stylesheet">
+    
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <!-- Jquery -->
+    <script
+    src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+    crossorigin="anonymous">
+    </script>
+
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
+      rel="stylesheet", type="text/css">
+
+</head>
+    
+<style>
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+</style>
+
+<body>
+
+    {% include "foodster/includes/navbar.html"%}
+  
+    {% include "foodster/includes/messages.html"%}  
+            
+    <main>
+        <div class="container">
+            <br>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <br>
+
+    {% include "foodster/includes/footer.html"%}
+
+</body>
+
+<script>
+M.AutoInit()
+</script>

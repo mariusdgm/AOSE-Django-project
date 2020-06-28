@@ -1,0 +1,75 @@
+{% extends "foodster/header.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <div>
+        <h2>
+            Start your culinary adventure today
+        </h2>
+    </div>
+
+    <br>
+    <div class="divider"></div>
+    <br>
+
+
+    <style>
+    .mySlides {
+        display: none;
+        }
+
+    .flex-block{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    /* .row {
+        border: 1px solid black;
+    }
+
+    .row > div {
+        padding: 10px;
+        background: #ddd;
+        border: 1px solid #fff;  
+        } */
+ 
+    </style>
+  
+    {% for fd in dishes %}
+        <div class="mySlides">
+            <div class="row flex-block valign-wrapper"> 
+                <div class="col s12 m4 l4 center-align" 
+                style="font-size: 150%;">
+                
+                        {{ fd.description }}
+                    
+                </div>
+                <div class="col s12 m8 l8" >
+                    <img src="{% static 'foodster/img/menu/' %}{{fd.photo_name}}" style="width:100%">
+                
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <script>
+        var myIndex = 0;
+        carousel();
+        
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";  
+            }
+            myIndex++;
+            if (myIndex > x.length) {myIndex = 1}    
+            x[myIndex-1].style.display = "block";  
+            setTimeout(carousel, 5000); // Change image every 5 seconds
+        }
+    </script>
+
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "foodster/header.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <h3>
+        {{user.username}}'s previous orders
+    </h3>
+
+
+{% for order in orders %}
+
+    <br>
+
+    <h5>
+        Ordered on: {{ order.order_date }}
+    </h5>
+
+    <table class="highlight">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Dish</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total price</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for order_item in order.items.all %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ order_item.item.name }}</td>
+                <td>{{ order_item.item.price }}</td>
+                <td>
+                    {{ order_item.quantity }}     
+                <td>{{ order_item.get_total_item_price }}</td>
+            </tr>
+            
+        {% endfor %} 
+
+        <tr>
+            <td colspan="3"></td>
+            <td><b>Order total</b></td>
+            <td> 
+                <b>
+                {{ order.total_price }} lei
+                </b>
+            </td>
+        </tr>
+
+    </table>
+
+    <br>
+
+    {% empty %}
+
+        <h5> There are no previous orders </h5>
+
+    {% endfor %}
+
+
+{% endblock %}
+    
+

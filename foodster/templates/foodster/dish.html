@@ -1,0 +1,48 @@
+{% extends "foodster/header.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div>
+    <div class="row flex-block valign-wrapper"> 
+        <div class="col s6 m6 l6 center-align" 
+        style="font-size: 150%;">
+
+        <h2>{{ object.name }}</h2>
+        <p>{{ object.description }}</p>
+        
+        <p>Ingredients: {{ object.ingredients }}</p>
+        <p>Price: {{ object.price }} lei</p>
+           
+           
+        <a href="{{ object.get_add_to_cart_url }}" class="btn" 
+        style="background-color:yellow; color: blue;">
+        Add to basket
+        
+        <i class="material-icons left">
+            add_shopping_cart
+            </i>
+        </a>   
+
+        {% comment %} <a href="{{ object.get_remove_from_cart_url }}" class="btn" 
+        style="background-color:yellow; color: blue;">
+        Remove from basket
+    
+        </a>  {% endcomment %}
+        
+
+        </div>
+        <div class="col s6 m6 l6" >
+            <img src="{% static 'foodster/img/menu/' %}{{object.photo_name}}" style="width:100%">
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}
+    
+
+
+

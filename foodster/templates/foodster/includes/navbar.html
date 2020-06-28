@@ -1,0 +1,47 @@
+
+<ul id="dropdown1" class="dropdown-content">
+    <li><a href="/account-orders">Orders</a></li>
+    <li class="divider"></li>
+    <li><a href="/logout">Logout</a></li>
+</ul>
+
+<nav>
+    <div class="nav-wrapper orange darken-3">
+        <a href="/" class="brand-logo left">&nbsp Foodster</a>
+        
+        <ul id="nav-mobile" class="right">
+            <li><a href="/">Home</a></li>
+            <li><a href="/menu">Menu</a></li>
+
+        {% if user.is_authenticated %}
+            <li><a href="/order-summary"><i class="material-icons">shopping_basket</i></a></li>
+            <ul class="left ">
+                <!-- Dropdown Trigger -->
+                <li><a class="dropdown-trigger" href="#!" 
+                    data-target="dropdown1">
+                    <i class="material-icons left">
+                        account_box
+                    </i>
+                    {{user.username}}</a></li>
+              </ul>
+              
+        {% else %}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+        {% endif %}
+
+        </ul>
+    </div>
+</nav>
+
+<script>
+    $( document ).ready(function() {
+        $(".dropdown-trigger").dropdown();
+    });
+</script>
+
+<style>
+.dropdown-content li > a, .dropdown-content li > span {
+    color: #ef6c00 !important;
+}
+</style>
