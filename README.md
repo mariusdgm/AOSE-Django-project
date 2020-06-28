@@ -4,4 +4,4 @@ Food delivery application with Django. Responsive design implemented with Materi
 
 ## Example of menu page
 
-![alt text](menu_pic.png?raw=true)
+![alt text](readme_info/menu_pic.png?raw=true)
