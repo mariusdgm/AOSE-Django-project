@@ -1,0 +1,7 @@
+# Foodster 
+
+Food delivery application with Django. Responsive design implemented with Materialize css.  
+
+## Example of menu page
+
+![alt text](menu_pic.png?raw=true)
